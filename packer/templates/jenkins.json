@@ -1,0 +1,30 @@
+{
+    "variables": {
+        "linode_api_key": ""
+    },
+    "builders": [
+        {
+            "type": "linode",
+            "linode_token": "{{user `linode_api_key`}}",
+            "image": "linode/debian10",
+            "region": "eu-central",
+            "instance_type": "g6-nanode-1",
+            "ssh_username": "root",
+            "instance_label": "jenkins-tf-demo-builder",
+            "image_label": "jenkins-tf-demo",
+            "image_description": "Jenkins demo packer image"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo apt-get update -y"
+            ]
+        },
+        {
+            "type": "shell",
+            "script": "packer/scripts/setup_jenkins.sh"
+        }
+    ]
+}
