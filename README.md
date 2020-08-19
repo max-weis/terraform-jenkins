@@ -12,12 +12,12 @@ To get the image name run following command:
 export TF_VAR_image=$(linode-cli images list | grep jenkins-tf-demo | awk '{print $2}')
 ```
 
-Export the linode API key via a env var.Like:
+Export the linode API key via a env var:
 ```sh
 export TF_VAR_token=<YOUR_KEY_HERE>
 ```
 
-## Run the jenkins VM
+## Run the Jenkins VM
 
 Confirm that the env vars are set correctly:
 ```sh
